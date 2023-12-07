@@ -1,7 +1,6 @@
 import requests
+from .exceptions import ChatIdError
 
-class ChatIdError(Exception):
-    pass
 
 
 class BaseTelegramBot:

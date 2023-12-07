@@ -1,0 +1,2 @@
+class ChatIdError(Exception):
+    pass
