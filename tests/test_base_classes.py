@@ -1,5 +1,5 @@
 import pytest
-from LeBotTel.base_classes import BaseTelegramBot
+from LeBotTel.base_telegram_bot import BaseTelegramBot
 from LeBotTel.exceptions import ChatIdError
 
 
