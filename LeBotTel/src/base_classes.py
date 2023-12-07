@@ -18,6 +18,21 @@ class BaseTelegramBot:
             self.chat_id = data['result'][0]['message']['chat']['id']
         except Exception as e:
             raise ChatIdError('chat_id not found') from e
+        
+    def export_chat_id(self, filename:str='chat.id') -> None:
+        try:
+            with open(filename, 'w') as f:
+                f.write(self.chat_id)
+        except Exception as e:
+            raise ChatIdError(f'can not write to file {filename}') from e
+
+    def import_chat_id(self, filename:str='chat.id') -> None:
+        try:
+            with open(filename, 'r') as f:
+                self.chat_id = f.read()
+        except Exception as e:
+            raise ChatIdError(f'can not read from file {filename}') from e
+
 
     def send_message(self, message:str) -> dict:
         if self.chat_id is None:
