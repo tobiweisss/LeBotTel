@@ -1,5 +1,5 @@
 # LeBotTel 
-![Logo](images/logo_text_transparent.png)
+![Logo](images/logo_text_inv.png)
 ## Abstract
 LeBotTel is an easy to use python package to create your own Telegram bots for different use cases. For details how to use this package refer to the [quick start](#quick-start) section. 
 
