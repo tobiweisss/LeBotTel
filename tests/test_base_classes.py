@@ -1,6 +1,8 @@
 import pytest
+from LeBotTel.base_message_handler import BaseMessageHandler
 from LeBotTel.base_telegram_bot import BaseTelegramBot
 from LeBotTel.exceptions import ChatIdError
+from conftest import FakeMessageHandler
 
 
 def test_get_chat_id(mock_api, token, chat_id):
@@ -60,3 +62,16 @@ def test_send_image_error(token):
     with pytest.raises(ChatIdError):
         bot.send_image(b'Hello World')
 
+def test_start_listener(mock_api, token, chat_id):
+    mock_api.get(f'https://api.telegram.org/bot{token}/getUpdates', json={'result': [{'update_id': 2, 'message': {'chat': {'id': chat_id}, 'text': 'test'}}]} )
+    bot = BaseTelegramBot(token, chat_id)
+    handler = FakeMessageHandler(bot)
+    bot.start_listener(handler)
+    assert handler.test == True
+    bot.running = False
+
+def test_start_listener_error(token):
+    bot = BaseTelegramBot(token)
+    handler = FakeMessageHandler(bot)
+    with pytest.raises(ChatIdError):
+        bot.start_listener(handler)
