@@ -48,7 +48,7 @@ class BaseTelegramBot:
         """
         try:
             with open(filename, 'w') as f:
-                f.write(self.chat_id)
+                f.write(str(self.chat_id))
         except Exception as e:
             raise ChatIdError(f'can not write to file {filename}') from e
 
