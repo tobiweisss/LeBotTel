@@ -8,7 +8,7 @@ with open('requirements.txt') as f:
 
 setuptools.setup(
     name="LeBotTel",                        # This is the name of the package
-    version="0.1.0",                        # The initial release version
+    version="0.2.0",                        # The initial release version
     author="Antonio Vidos, Tobias Lettner, Tobias Weiß, Uwe Kölbel",
     author_email="",                        # TODO: Add the email address here
     description="A simple Telegram Bot",
