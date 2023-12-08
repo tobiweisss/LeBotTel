@@ -9,6 +9,10 @@ The name LeBotTel is combined from "LeCun", "RoBot" and "Telegram". The "Le" in 
 ## Quick Start
 TODO add quick start / API documentation / how to install / ...
 
+## Changelog
+- 0.1.0: setup package. Bot can send messages and images
+- 0.2.0: Bot can receive messages 
+
 ## Authors
 - Antonio Vidos
 - Tobias Lettner
