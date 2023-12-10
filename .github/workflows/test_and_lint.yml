@@ -28,6 +28,7 @@ jobs:
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
         if [ -f dev_requirements.txt ]; then pip install -r dev_requirements.txt; fi 
+        pip install .
       # pytest, black and flake8 are contained in the dev_requirements.txt
     - name: Lint with black
       run: |
