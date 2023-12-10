@@ -143,7 +143,7 @@ class BaseTelegramBot:
 
         Parameters:
         handler: BaseMessageHandler
-            The handler to call when a message is received you can implement your own handler 
+            The handler to call when a message is received you can implement your own handler
             by inheriting from BaseMessageHandler
         timeout: int
             The timeout in seconds for long polling
