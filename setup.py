@@ -3,9 +3,6 @@ import setuptools
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
-with open("requirements.txt") as f:
-    required = f.read().splitlines()
-
 setuptools.setup(
     name="LeBotTel",  # This is the name of the package
     version="0.2.0",  # The initial release version
@@ -23,5 +20,7 @@ setuptools.setup(
     python_requires=">=3.9",  # Minimum version requirement of the package
     py_modules=["LeBotTel"],  # Name of the python package
     package_dir={"": "LeBotTel"},  # Directory of the source code of the package
-    install_requires=required,  # Install other dependencies if any
+    install_requires=[
+        "requests~=2.31.0", # Add any additional packages here
+    ],  # Install other dependencies if any
 )
