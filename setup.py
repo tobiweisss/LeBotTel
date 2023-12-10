@@ -17,10 +17,10 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],  # Information to filter the project on PyPi website
-    python_requires=">=3.9",  # Minimum version requirement of the package
+    python_requires=">=3.10",  # Minimum version requirement of the package
     py_modules=["LeBotTel"],  # Name of the python package
     package_dir={"": "LeBotTel"},  # Directory of the source code of the package
     install_requires=[
-        "requests~=2.31.0", # Add any additional packages here
+        "requests~=2.31.0",  # Add any additional packages here
     ],  # Install other dependencies if any
 )
