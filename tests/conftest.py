@@ -2,18 +2,22 @@ import pytest
 from LeBotTel.base_message_handler import BaseMessageHandler
 import requests_mock
 
+
 @pytest.fixture
 def token():
     return "THIS_IS_A_VALID_TOKEN"
+
 
 @pytest.fixture
 def chat_id():
     return "THIS_IS_A_VALID_CHAT_ID"
 
+
 @pytest.fixture
 def mock_api():
     with requests_mock.Mocker() as m:
         yield m
+
 
 class FakeMessageHandler(BaseMessageHandler):
     def __init__(self, bot):
