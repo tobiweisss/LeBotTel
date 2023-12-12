@@ -4,3 +4,7 @@ class ChatIdError(Exception):
 
 class ListenerError(Exception):
     pass
+
+
+class ConfigError(Exception):
+    pass

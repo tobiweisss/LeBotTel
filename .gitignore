@@ -162,5 +162,6 @@ cython_debug/
 # LeBotTel specific files
 # chat_id file
 *.id
+*.json
 # debug file used for manual testing
 debug.py
