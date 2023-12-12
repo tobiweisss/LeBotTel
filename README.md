@@ -1,5 +1,5 @@
-![Logo](images/logo_text_inv.png#gh-dark-mode-only)
-![Logo](images/logo_text.png#gh-light-mode-only)
+![Logo](https://raw.githubusercontent.com/tobiweisss/LeBotTel/main/images/logo_text_inv.png#gh-dark-mode-only)
+![Logo](https://raw.githubusercontent.com/tobiweisss/LeBotTel/main/images/logo_text.png#gh-light-mode-only)
 ## Abstract
 LeBotTel is an easy to use python package to create your own Telegram bots for different use cases. For details how to use this package refer to the [quick start](#quick-start) section. 
 
