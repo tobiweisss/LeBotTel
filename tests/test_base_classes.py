@@ -23,16 +23,19 @@ def test_get_chat_id_error(mock_api, token):
     with pytest.raises(ChatIdError):
         bot.get_chat_id()
 
+
 def test_export_config(token, chat_id, tmp_path):
     bot = BaseTelegramBot(token, chat_id)
     bot.export_config(tmp_path / "config.json")
     with open(tmp_path / "config.json", "r") as f:
         assert json.loads(f.read()) == {"token": token, "chat_id": chat_id}
 
+
 def test_export_config_error(token, chat_id):
     bot = BaseTelegramBot(token, chat_id)
     with pytest.raises(ConfigError):
         bot.export_config("/this/is/not/a/valid/path/config.json")
+
 
 def test_from_config(token, chat_id, tmp_path):
     with open(tmp_path / "config.json", "w") as f:
@@ -41,9 +44,19 @@ def test_from_config(token, chat_id, tmp_path):
     assert bot.token == token
     assert bot.chat_id == chat_id
 
-def test_from_config_error(token, chat_id):
+
+def test_from_config_error():
     with pytest.raises(ConfigError):
         BaseTelegramBot.from_config("/this/is/not/a/valid/path/config.json")
+
+
+def test_from_env(token, chat_id, monkeypatch):
+    monkeypatch.setenv("TELEGRAM_BOT_TOKEN", token)
+    monkeypatch.setenv("TELEGRAM_CHAT_ID", chat_id)
+    bot = BaseTelegramBot.from_env()
+    assert bot.token == token
+    assert bot.chat_id == chat_id
+
 
 def test_export_chat_id(chat_id, tmp_path):
     bot = BaseTelegramBot("token", chat_id)
