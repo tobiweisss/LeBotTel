@@ -1,5 +1,6 @@
 import json
 from warnings import warn
+import os
 import requests
 from threading import Thread
 
@@ -41,7 +42,7 @@ class BaseTelegramBot:
         except Exception as e:
             raise ChatIdError("chat_id not found") from e
 
-    def export_config(self, filename:str="config.json") -> None:
+    def export_config(self, filename: str = "config.json") -> None:
         """
         Save the current config to a file.
 
@@ -63,7 +64,7 @@ class BaseTelegramBot:
             raise ConfigError(f"can not write to file {filename}") from e
 
     @classmethod
-    def from_config(cls, filename:str="config.json") -> "BaseTelegramBot":
+    def from_config(cls, filename: str = "config.json") -> "BaseTelegramBot":
         """
         Create a new BaseTelegramBot object from the config from a file.
 
@@ -84,9 +85,29 @@ class BaseTelegramBot:
         except Exception as e:
             raise ConfigError(f"can not read from file {filename}") from e
 
+    @classmethod
+    def from_env(cls) -> "BaseTelegramBot":
+        """
+        Create a new BaseTelegramBot object from environment variables.
+        The environment variables are:
+        TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID
+
+        Raises:
+            ConfigError: if the config can not be loaded from the environment
+
+        Returns:
+            BaseTelegramBot: a new instance of BaseTelegramBot
+        """
+        try:
+            token = os.environ["TELEGRAM_BOT_TOKEN"]
+            chat_id = os.environ["TELEGRAM_CHAT_ID"]
+            return cls(token, chat_id)
+        except Exception as e:
+            raise ConfigError("can not read from environment") from e
+
     def export_chat_id(self, filename: str = "chat.id") -> None:
         """
-        [WARNING] 
+        [WARNING]
         This method is deprecated and will be removed in version 1.0.0, use export_config instead.
 
         Save the current chat_id to a file.
@@ -98,7 +119,10 @@ class BaseTelegramBot:
         Raises:
             ChatIdError: if the chat_id can not be saved to the file
         """
-        warn("export_chat_id is deprecated and will be removed in version 1.0.0, use export_config instead", DeprecationWarning)
+        warn(
+            "export_chat_id is deprecated and will be removed in version 1.0.0, use export_config instead",
+            DeprecationWarning,
+        )
         try:
             with open(filename, "w") as f:
                 f.write(str(self.chat_id))
@@ -119,7 +143,10 @@ class BaseTelegramBot:
         Raises:
             ChatIdError: if the chat_id can not be loaded from the file
         """
-        warn("import_chat_id is deprecated and will be removed in version 1.0.0, use from_config instead", DeprecationWarning)
+        warn(
+            "import_chat_id is deprecated and will be removed in version 1.0.0, use from_config instead",
+            DeprecationWarning,
+        )
         try:
             with open(filename, "r") as f:
                 self.chat_id = f.read()
