@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="LeBotTel",  # This is the name of the package
-    version="0.3.0",  # The initial release version
+    version="0.3.1",  # The initial release version
     author="Antonio Vidos, Tobias Lettner, Tobias Weiß, Uwe Kölbel",
     author_email="lebottel.team@gmail.com",
     description="A simple Telegram Bot",
@@ -19,7 +19,6 @@ setuptools.setup(
     ],  # Information to filter the project on PyPi website
     python_requires=">=3.10",  # Minimum version requirement of the package
     py_modules=["LeBotTel"],  # Name of the python package
-    package_dir={"": "LeBotTel"},  # Directory of the source code of the package
     install_requires=[
         "requests~=2.31.0",  # Add any additional packages here
     ],  # Install other dependencies if any

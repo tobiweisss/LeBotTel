@@ -13,6 +13,7 @@ TODO add quick start / API documentation / how to install / ...
 - 0.1.0: setup package. Bot can send messages and images
 - 0.2.0: Bot can receive messages 
 - 0.3.0: Add method export_config to save the current token and chat_id to a file, add classmethod from_config to create a bot from the config file, add classmethod from_env to create a bot from the environment variables TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID. Methods import_chat_id and export_chat_id are deprecated and will be removed in version 1.0.0
+- 0.3.1: Adapting package structure 
 
 ## Authors
 - Antonio Vidos
