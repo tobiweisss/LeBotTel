@@ -175,7 +175,7 @@ class BaseTelegramBot:
 
     def send_image(self, image: bytes) -> dict:
         """
-        Send a image to the chat. 
+        Send a image to the chat.
         Validation that the image is valid has to be done on user side.
 
         Parameters:
@@ -195,7 +195,6 @@ class BaseTelegramBot:
         data = {"chat_id": self.chat_id}
         response = requests.post(url, files=files, data=data)
         return response.json()
-    
 
     def send_gif(self, gif: bytes) -> dict:
         """
@@ -205,7 +204,7 @@ class BaseTelegramBot:
         Parameters:
         gif: bytes
             The gif to send (gif)
-        
+
         Raises:
             ChatIdError: if the chat_id is not set
 
@@ -219,7 +218,6 @@ class BaseTelegramBot:
         data = {"chat_id": self.chat_id}
         response = requests.post(url, files=files, data=data)
         return response.json()
-
 
     def start_listener(self, handler: BaseMessageHandler = None, timeout: int = 30):
         """
