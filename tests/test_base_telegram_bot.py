@@ -141,3 +141,18 @@ def test_start_listener_error(token):
     handler = FakeMessageHandler(bot)
     with pytest.raises(ChatIdError):
         bot.start_listener(handler)
+
+
+def test_send_gif(mock_api, token, chat_id):
+    mock_api.post(
+        f"https://api.telegram.org/bot{token}/sendAnimation", json={"result": "ok"}
+    )
+    bot = BaseTelegramBot(token, chat_id)
+    response = bot.send_gif(b"Hello World")
+    assert response["result"] == "ok"
+
+
+def test_send_gif_error(token):
+    bot = BaseTelegramBot(token)
+    with pytest.raises(ChatIdError):
+        bot.send_gif(b"Hello World")
