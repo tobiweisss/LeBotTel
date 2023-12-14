@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="LeBotTel",  # This is the name of the package
-    version="0.3.1",  # The initial release version
+    version="0.4.0",  # The initial release version
     author="Antonio Vidos, Tobias Lettner, Tobias Weiß, Uwe Kölbel",
     author_email="lebottel.team@gmail.com",
     description="A simple Telegram Bot",
