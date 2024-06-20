@@ -7,7 +7,61 @@ LeBotTel is an easy to use python package to create your own Telegram bots for d
 The name LeBotTel is combined from "LeCun", "RoBot" and "Telegram". The "Le" in the name comes from Yann LeCun, to honor his work on neural networks (has nothing to do with this project, but he is a great scientist and pioneer in the field of neural networks (LeNet)). What has this bot to do with neural networks? We want to use this bot to log the training of neural networks. "Bot" comes from RoBot, because this is what the goal of this project is. And "Tel" comes from Telegram, because its a bot for Telegram. The "Pi" in our logo represents looks similar to the "tT" in "LeBotTel" and stands for the used Programming Language Python.
 
 ## Quick Start
-TODO add quick start / API documentation / how to install / ...
+
+#### Installation
+
+```bash
+pip install LeBotTel
+```
+
+#### Send a message
+
+```python
+from LeBotTel import BaseTelegramBot
+
+bot = BaseTelegramBot(token="YOUR_BOT_TOKEN", chat_id="YOUR_CHAT_ID")
+
+bot.send_message("Hello World!")
+```
+
+#### Send an image
+
+```python
+from LeBotTel.base_telegram_bot import BaseTelegramBot
+import imageio
+import io
+
+bot = BaseTelegramBot(token="YOUR_BOT_TOKEN", chat_id="YOUR_CHAT_ID")
+
+buffer = io.BytesIO()
+img = imageio.imread('PATH_TO_IMAGE')
+imageio.imsave(buffer, img, format="PNG")
+
+bot.send_image(buffer.getvalue())
+```
+
+#### Send a gif
+
+```python
+from LeBotTel.base_telegram_bot import BaseTelegramBot
+import imageio
+import io
+import glob
+
+bot = BaseTelegramBot(token="YOUR_BOT_TOKEN", chat_id="YOUR_CHAT_ID")
+
+buffer = io.BytesIO()
+images = []
+image_files = glob.glob('PATH_TO_IMAGES_DIR/*.png')
+
+for image_file in image_files:
+    images.append(imageio.imread(image_file))
+
+imageio.mimsave(buffer, images, format="GIF", duration=30)
+
+bot.send_gif(buffer.getvalue())
+```
+
 
 ## Changelog
 - 0.1.0: setup package. Bot can send messages and images
