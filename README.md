@@ -21,8 +21,14 @@ from LeBotTel import BaseTelegramBot
 
 bot = BaseTelegramBot(token="YOUR_BOT_TOKEN", chat_id="YOUR_CHAT_ID")
 
-bot.send_message("Hello World!")
+bot.send_message("Hello World!") # Raises ChatIdError if chat_id is not set
 ```
+
+<b>Hint:</b> To get the `chat_id` you first have to send your Bot a message (e.g. `/start`). Then you need to send a `GET` request to the following URL: 
+
+`https://api.telegram.org/bot<YOUR_BOT_TOKEN>/getUpdates`
+
+In the returned JSON you will find the `chat_id` under `message`->`chat`->`id`.
 
 #### Send an image
 
@@ -34,10 +40,10 @@ import io
 bot = BaseTelegramBot(token="YOUR_BOT_TOKEN", chat_id="YOUR_CHAT_ID")
 
 buffer = io.BytesIO()
-img = imageio.imread('PATH_TO_IMAGE')
+img = imageio.imread('PATH_TO_IMAGE') # Image has to be in *.png format
 imageio.imsave(buffer, img, format="PNG")
 
-bot.send_image(buffer.getvalue())
+bot.send_image(buffer.getvalue()) # Raises ChatIdError if chat_id is not set
 ```
 
 #### Send a gif
@@ -52,14 +58,14 @@ bot = BaseTelegramBot(token="YOUR_BOT_TOKEN", chat_id="YOUR_CHAT_ID")
 
 buffer = io.BytesIO()
 images = []
-image_files = glob.glob('PATH_TO_IMAGES_DIR/*.png')
+image_files = glob.glob('PATH_TO_IMAGES_DIR/*.png') # Images have to be in *.png format
 
 for image_file in image_files:
     images.append(imageio.imread(image_file))
 
 imageio.mimsave(buffer, images, format="GIF", duration=30)
 
-bot.send_gif(buffer.getvalue())
+bot.send_gif(buffer.getvalue()) # Raises ChatIdError if chat_id is not set
 ```
 
 
