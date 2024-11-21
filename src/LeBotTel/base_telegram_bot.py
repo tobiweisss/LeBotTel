@@ -222,7 +222,11 @@ class BaseTelegramBot:
         response = requests.post(url, files=files, data=data)
         return response.json()
 
-    def start_listener(self, handler: LeBotTel.base_message_handler.BaseMessageHandler|None = None, timeout: int = 30)->None:
+    def start_listener(
+        self, 
+        handler: LeBotTel.base_message_handler.BaseMessageHandler|None = None,
+        timeout: int = 30
+    )->None:
         """
         Start a listener for messages from the chat.
         This method is intended to be used in production.
