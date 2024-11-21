@@ -1,10 +1,11 @@
 from __future__ import annotations
+
 import json
 import os
 from threading import Thread
 from warnings import warn
-import requests
 
+import requests
 
 import LeBotTel.base_message_handler
 from LeBotTel.exceptions import ChatIdError, ConfigError, ListenerError

@@ -1,5 +1,6 @@
 import LeBotTel.base_telegram_bot
 
+
 class BaseMessageHandler:
     """
     Base class for message handlers.
