@@ -76,6 +76,7 @@ bot.send_gif(buffer.getvalue()) # Raises ChatIdError if chat_id is not set
 - 0.3.1: Adapting package structure 
 - 0.4.0: Add `send_gif` method
 - 0.4.1: Switch to pyproject.toml for build
+- 0.4.2: Use ruff for linting in CI-pipeline
 
 ## Authors
 - Antonio Vidos
