@@ -15,7 +15,7 @@ class BaseTelegramBot:
     It is not intended to be used directly.
     """
 
-    def __init__(self, token: str, chat_id: str = None) -> None:
+    def __init__(self, token: str, chat_id: str|None = None) -> None:
         """
         Parameters:
         token: str
@@ -220,7 +220,7 @@ class BaseTelegramBot:
         response = requests.post(url, files=files, data=data)
         return response.json()
 
-    def start_listener(self, handler: BaseMessageHandler = None, timeout: int = 30):
+    def start_listener(self, handler: BaseMessageHandler|None = None, timeout: int = 30)->None:
         """
         Start a listener for messages from the chat.
         This method is intended to be used in production.
@@ -240,7 +240,7 @@ class BaseTelegramBot:
         )
         listener_thread.start()
 
-    def _listen_for_messages(self, handler: BaseMessageHandler, timeout: int = 30):
+    def _listen_for_messages(self, handler: BaseMessageHandler, timeout: int = 30)->None:
         """
         Listen for messages from the chat.
         This method is not intended to be used directly.
