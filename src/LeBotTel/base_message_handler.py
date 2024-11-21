@@ -1,5 +1,4 @@
-from LeBotTel.base_telegram_bot import BaseTelegramBot
-
+import LeBotTel.base_telegram_bot
 
 class BaseMessageHandler:
     """
@@ -8,7 +7,7 @@ class BaseMessageHandler:
     Your own message handler should implement the handle method and the help method.
     """
 
-    def __init__(self, bot:BaseTelegramBot) -> None:
+    def __init__(self, bot:LeBotTel.base_telegram_bot.BaseTelegramBot) -> None:
         """
         Initialize the message handler.
         """

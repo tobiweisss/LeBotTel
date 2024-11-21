@@ -1,11 +1,12 @@
+from __future__ import annotations
 import json
 import os
 from threading import Thread
 from warnings import warn
-
 import requests
 
-from LeBotTel.base_message_handler import BaseMessageHandler
+
+import LeBotTel.base_message_handler
 from LeBotTel.exceptions import ChatIdError, ConfigError, ListenerError
 
 
@@ -220,7 +221,7 @@ class BaseTelegramBot:
         response = requests.post(url, files=files, data=data)
         return response.json()
 
-    def start_listener(self, handler: BaseMessageHandler|None = None, timeout: int = 30)->None:
+    def start_listener(self, handler: LeBotTel.base_message_handler.BaseMessageHandler|None = None, timeout: int = 30)->None:
         """
         Start a listener for messages from the chat.
         This method is intended to be used in production.
@@ -234,13 +235,13 @@ class BaseTelegramBot:
         if self.chat_id is None:
             raise ChatIdError("chat_id is not set")
         if handler is None:
-            handler = BaseMessageHandler(self)
+            handler = LeBotTel.base_message_handler.BaseMessageHandler(self)
         listener_thread = Thread(
             target=self._listen_for_messages, args=(handler, timeout), daemon=True
         )
         listener_thread.start()
 
-    def _listen_for_messages(self, handler: BaseMessageHandler, timeout: int = 30)->None:
+    def _listen_for_messages(self, handler: LeBotTel.base_message_handler.BaseMessageHandler, timeout: int = 30)->None:
         """
         Listen for messages from the chat.
         This method is not intended to be used directly.
