@@ -75,6 +75,7 @@ bot.send_gif(buffer.getvalue()) # Raises ChatIdError if chat_id is not set
 - 0.3.0: Add method `export_config` to save the current token and chat_id to a file, add classmethod `from_config` to create a bot from the config file, add classmethod `from_env` to create a bot from the environment variables `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID`. Methods `import_chat_id` and `export_chat_id` are deprecated and will be removed in version 1.0.0
 - 0.3.1: Adapting package structure 
 - 0.4.0: Add `send_gif` method
+- 0.4.1: Switch to pyproject.toml for build
 
 ## Authors
 - Antonio Vidos

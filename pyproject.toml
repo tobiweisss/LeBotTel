@@ -1,0 +1,67 @@
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "LeBotTel"
+version = "0.4.1"
+dependencies = [
+    "requests~=2.31.0"
+]
+readme = "README.md"
+requires-python = ">=3.10.0"
+license = {file = "LICENSE"}
+authors = [
+    {name = "Antonio Vidos"},
+    {name = "Tobias Lettner"},
+    {name = "Tobias Weiß"},
+    {name = "Uwe Kölbl"},
+    {email = "lebottel.team@gmail.com"}
+]
+classifiers=[
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest~=7.4.3",
+    "requests_mock~=1.11.0",
+]
+lint = [
+    "flake8~=6.1.0",
+    "black~=23.11.0",
+    "ruff==0.7.4",
+    "mypy==1.13.0",
+]
+dev = [
+    "LeBotTel[test,lint]"
+]
+
+[tool.ruff]
+line-length = 120
+indent-width = 4
+
+[toll.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "lf"
+docstring-code-line-length = "dynamic"
+
+[tool.ruff.lint]
+select = [
+    "F",    # pyflakes
+    "E",    # pydodestyle
+    "I",    # isort
+    "ANN",  # flake8 type annotations
+    "RUF",  # ruff specific rules
+]
+
+[tool.ruff.pydocstyle]
+convention = "google"
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+disallow_untyped_defs = true
