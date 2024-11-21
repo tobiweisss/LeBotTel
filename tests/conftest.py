@@ -1,6 +1,7 @@
 import pytest
-from LeBotTel.base_message_handler import BaseMessageHandler
 import requests_mock
+
+from LeBotTel.base_message_handler import BaseMessageHandler
 
 
 @pytest.fixture

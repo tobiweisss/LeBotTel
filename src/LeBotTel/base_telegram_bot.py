@@ -1,8 +1,9 @@
 import json
-from warnings import warn
 import os
-import requests
 from threading import Thread
+from warnings import warn
+
+import requests
 
 from LeBotTel.base_message_handler import BaseMessageHandler
 from LeBotTel.exceptions import ChatIdError, ConfigError, ListenerError

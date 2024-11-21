@@ -1,10 +1,10 @@
 import json
+
 import pytest
-from LeBotTel.exceptions import ConfigError
-from LeBotTel.base_message_handler import BaseMessageHandler
-from LeBotTel.base_telegram_bot import BaseTelegramBot
-from LeBotTel.exceptions import ChatIdError
 from conftest import FakeMessageHandler
+
+from LeBotTel.base_telegram_bot import BaseTelegramBot
+from LeBotTel.exceptions import ChatIdError, ConfigError
 
 
 def test_get_chat_id(mock_api, token, chat_id):
