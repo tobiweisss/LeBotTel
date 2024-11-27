@@ -1,5 +1,6 @@
-from LeBotTel.base_message_handler import BaseMessageHandler
 from conftest import FakeBot
+
+from LeBotTel.base_message_handler import BaseMessageHandler
 
 
 def test_handle_help():

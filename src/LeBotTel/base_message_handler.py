@@ -1,3 +1,6 @@
+import LeBotTel.base_telegram_bot
+
+
 class BaseMessageHandler:
     """
     Base class for message handlers.
@@ -5,13 +8,13 @@ class BaseMessageHandler:
     Your own message handler should implement the handle method and the help method.
     """
 
-    def __init__(self, bot):
+    def __init__(self, bot:LeBotTel.base_telegram_bot.BaseTelegramBot) -> None:
         """
         Initialize the message handler.
         """
         self.bot = bot
 
-    def handle(self, message):
+    def handle(self, message:dict)->None:
         """
         Handle a message from the chat.
         This method should be implemented by your own message handler.
@@ -31,7 +34,7 @@ class BaseMessageHandler:
                 "The answer to life, the universe and everything is 42."
             )
 
-    def help(self):
+    def help(self)->str:
         """
         Return a help message.
         This method should be implemented by your own message handler.
